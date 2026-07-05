@@ -2,7 +2,9 @@
 
 Página web personal de **Edwin Alejandro González**, desarrollador de software especializado en automatización de procesos e integración de IA para empresas colombianas.
 
-Es un sitio estático de una sola página (`pag_proyecto.html`), sin dependencias de build ni frameworks: HTML, CSS y JavaScript vanilla en un solo archivo.
+Es un sitio estático de una sola página (`index.html`), sin dependencias de build ni frameworks: HTML, CSS y JavaScript vanilla en un solo archivo.
+
+🔗 En vivo en GitHub Pages: https://alejo117.github.io/proyecto/
 
 ## Contenido de la página
 
@@ -23,7 +25,7 @@ Es un sitio estático de una sola página (`pag_proyecto.html`), sin dependencia
 
 ## Cómo verlo localmente
 
-Basta con abrir `pag_proyecto.html` en el navegador, o servirlo con cualquier servidor estático:
+Basta con abrir `index.html` en el navegador, o servirlo con cualquier servidor estático:
 
 ```bash
 npx serve .
