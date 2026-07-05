@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edwin Alejandro González · Automatización e IA</title>
+<meta name="description" content="Desarrollador de software especializado en automatización de procesos e integración de IA para empresas colombianas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F6F4; --ink:#0D1B24; --ink-soft:#3D5361;
+  --green:#00A884; --green-deep:#056A56; --green-tint:#DCF2EA;
+  --amber:#F2A93B; --amber-tint:#FDF0DA;
+  --card:#FFFFFF; --line:#D9E4DE; --term:#0D1B24; --term-green:#4EE6A8;
+  --nav-bg:rgba(243,246,244,.88);
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --display:'Sora',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);color:var(--ink);background:var(--paper);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;line-height:1.55;
+}
+a{color:var(--green-deep)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+
+/* ---------- nav ---------- */
+
+[data-theme="dark"]{
+  --paper:#0B1620; --ink:#E8F2ED; --ink-soft:#9DB8AD;
+  --green-tint:#0E2B26; --amber-tint:#33260D;
+  --card:#12242F; --line:#1F3A46;
+  --nav-bg:rgba(11,22,32,.88);
+}
+[data-theme="dark"] body{background-image:linear-gradient(rgba(31,58,70,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(31,58,70,.5) 1px,transparent 1px)}
+[data-theme="dark"] .tag{color:var(--term-green)}
+[data-theme="dark"] .tag.amber{color:var(--amber)}
+[data-theme="dark"] .mini-chip{color:var(--term-green)}
+[data-theme="dark"] a{color:var(--term-green)}
+[data-theme="dark"] .quote-block b[style]{color:var(--term-green)!important}
+[data-theme="dark"] .btn-primary{box-shadow:0 6px 18px rgba(0,168,132,.2)}
+[data-theme="dark"] .term-window{box-shadow:0 14px 34px rgba(0,0,0,.5)}
+[data-theme="dark"] footer span span[style]{color:var(--term-green)!important}
+.theme-toggle{
+  font-family:var(--mono);font-size:15px;background:var(--card);border:1.5px solid var(--line);
+  color:var(--ink);border-radius:999px;width:38px;height:38px;cursor:pointer;flex-shrink:0;
+}
+.theme-toggle:hover{border-color:var(--green)}
+nav{
+  position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(8px);
+  border-bottom:1.5px solid var(--line);
+}
+.nav-inner{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none}
+.logo .dollar{color:var(--green)}
+.nav-links{display:flex;gap:22px;flex-wrap:wrap}
+.nav-links a{font-family:var(--mono);font-size:13px;text-decoration:none;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--green-deep)}
+.status-pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;background:var(--term);color:var(--term-green);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.status-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--term-green);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ---------- hero ---------- */
+.hero{padding:96px 0 100px}
+.term-window{
+  background:var(--term);border-radius:14px;padding:20px 24px;max-width:560px;
+  font-family:var(--mono);font-size:14.5px;color:#BFD6CC;
+  box-shadow:0 14px 34px rgba(13,27,36,.25);margin-bottom:40px;
+}
+.term-dots{display:flex;gap:7px;margin-bottom:14px}
+.term-dots span{width:11px;height:11px;border-radius:50%}
+.term-line{margin-top:6px;min-height:1.4em}
+.term-line .p{color:#7FA096}
+.term-line .g{color:var(--term-green)}
+.cursor{display:inline-block;width:8px;height:1.05em;background:var(--term-green);vertical-align:text-bottom;animation:pulse 1s infinite}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,9vw,88px);line-height:.98;letter-spacing:-.03em;overflow-wrap:anywhere}
+.hero h1 .accent{color:var(--green)}
+.hero .role{font-size:clamp(17px,2.4vw,22px);font-weight:600;color:var(--ink-soft);margin-top:18px;max-width:640px}
+.hero .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:14px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:999px;transition:transform .15s,box-shadow .15s;display:inline-block}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(0,168,132,.35)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink);background:var(--card)}
+
+/* ---------- shared ---------- */
+.prompt{font-family:var(--mono);font-size:14px;color:var(--green-deep);margin-bottom:12px}
+.prompt::before{content:'$ ';color:var(--ink-soft)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.6vw,42px);letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--ink-soft);font-size:17px;max-width:720px;margin-bottom:40px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:0 2px 0 rgba(13,27,36,.04)}
+.tag{font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green-deep);background:var(--green-tint);padding:4px 10px;border-radius:6px;display:inline-block}
+.tag.amber{color:#8a5a10;background:var(--amber-tint)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- sobre mí ---------- */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+.quote-block{border-left:5px solid var(--green);padding-left:22px;font-size:17.5px}
+.quote-block p+p{margin-top:16px}
+.list{list-style:none}
+.list li{margin-bottom:12px;padding-left:22px;position:relative;font-size:15.5px}
+.list li::before{content:'▸';position:absolute;left:0;color:var(--green);font-weight:700}
+
+/* ---------- skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.skill{display:flex;gap:16px}
+.skill .num{font-family:var(--mono);font-weight:700;font-size:14px;background:var(--term);color:var(--term-green);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.skill h3{font-family:var(--display);font-size:16.5px;margin-bottom:5px}
+.skill p{font-size:14.2px;color:var(--ink-soft)}
+.stack-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+.stack-chip{font-family:var(--mono);font-size:13px;border:1.5px solid var(--ink);border-radius:999px;padding:7px 15px;background:var(--card)}
+
+/* ---------- servicios ---------- */
+#servicios{background:var(--term);color:#E8F5EF;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+#servicios .prompt{color:var(--term-green)}
+#servicios .prompt::before{color:#7FA096}
+#servicios h2{color:#fff}
+#servicios .sub{color:#9DB8AD}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.svc{background:#12242F;border:1.5px solid #1F3A46;border-radius:16px;padding:26px;transition:transform .18s,border-color .18s}
+.svc:hover{transform:translateY(-4px);border-color:var(--term-green)}
+.svc .icon{font-size:30px;margin-bottom:14px}
+.svc h3{font-family:var(--display);font-size:19px;color:#fff;margin-bottom:8px}
+.svc p{font-size:14.6px;color:#AFC8BE}
+.svc .badge{margin-top:16px;display:inline-block;font-family:var(--mono);font-size:12px;color:var(--term-green);border:1px solid var(--term-green);border-radius:999px;padding:5px 12px}
+.garaje{margin-top:22px;background:linear-gradient(135deg,#12242F,#0E2B26);border:1.5px solid var(--term-green);border-radius:18px;padding:30px}
+.garaje h3{font-family:var(--display);font-size:22px;color:var(--term-green);margin-bottom:8px}
+.garaje p{color:#C7DCD3;font-size:15.5px;max-width:820px}
+
+/* ---------- proyectos ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.proj{display:flex;flex-direction:column;gap:12px;transition:transform .18s,box-shadow .18s}
+.proj:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(13,27,36,.12)}
+.proj .head{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft)}
+.proj h3{font-family:var(--display);font-size:18.5px}
+.proj p{font-size:14.4px;color:var(--ink-soft);flex:1}
+.proj .foot{display:flex;flex-wrap:wrap;gap:8px}
+.mini-chip{font-family:var(--mono);font-size:11.5px;background:var(--green-tint);color:var(--green-deep);border-radius:6px;padding:3px 9px}
+
+/* ---------- contacto ---------- */
+#contacto .card{max-width:720px}
+.contact-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+footer{border-top:1.5px solid var(--line);padding:26px 0;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+
+/* ---------- blog ---------- */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.post{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);transition:transform .18s,box-shadow .18s}
+.post:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(13,27,36,.12)}
+.post .date{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+.post h3{font-family:var(--display);font-size:18px;line-height:1.3}
+.post p{font-size:14.2px;color:var(--ink-soft);flex:1}
+.post .read{font-family:var(--mono);font-size:13px;color:var(--green-deep);font-weight:700}
+[data-theme="dark"] .post .read{color:var(--term-green)}
+
+/* ---------- formulario ---------- */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.form-grid .full{grid-column:1 / -1}
+label{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);display:block;margin-bottom:6px}
+input,textarea{
+  width:100%;font-family:var(--body);font-size:15px;color:var(--ink);
+  background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;
+}
+input:focus,textarea:focus{outline:2px solid var(--green);border-color:var(--green)}
+textarea{min-height:120px;resize:vertical}
+.form-note{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-top:12px}
+@media (max-width:600px){.form-grid{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .about-grid{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .nav-links{display:none}
+  .status-pill{font-size:11px;padding:5px 10px}
+}
+@media (max-width:460px){
+  .pill-label{display:none}
+  .status-pill::after{content:'online'}
+  .nav-inner{padding:12px 16px}
+  .wrap{padding:0 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  .cursor,.status-pill .dot{animation:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#"><span class="dollar">$</span> alejandro<span style="color:var(--ink-soft)">.dev</span></a>
+    <div class="nav-links">
+      <a href="#sobre-mi">--sobre-mi</a>
+      <a href="#habilidades">--skills</a>
+      <a href="#servicios">--servicios</a>
+      <a href="#proyectos">--proyectos</a>
+      <a href="#blog">--blog</a>
+      <a href="#contacto">--contacto</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="status-pill"><span class="dot"></span><span class="pill-label">disponible para proyectos</span></span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="term-window">
+      <div class="term-dots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
+      <div class="term-line"><span class="p">$</span> whoami</div>
+      <div class="term-line g" id="type-1"></div>
+      <div class="term-line" id="type-2-wrap" style="visibility:hidden"><span class="p">$</span> <span id="type-2"></span><span class="cursor"></span></div>
+    </div>
+    <h1>AUTOMATIZO<br>PROCESOS <span class="accent">CON IA</span></h1>
+    <p class="role">Soy <b>Edwin Alejandro González</b>, desarrollador de software. Convierto los procesos manuales que le roban tiempo a tu empresa en sistemas que trabajan solos.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contacto">Hablemos de tu proceso →</a>
+      <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SOBRE MÍ ================= -->
+<section id="sobre-mi">
+  <div class="wrap">
+    <div class="prompt">alejandro --sobre-mi</div>
+    <h2>Hablo el idioma del negocio y el de la máquina</h2>
+    <p class="sub">No soy solo "otro programador": entiendo el problema del empresario y lo convierto en una solución que funciona en producción, no en una promesa.</p>
+    <div class="about-grid">
+      <div class="quote-block reveal">
+        <p>Soy estudiante de <b>Ingeniería de Sistemas en la CUN</b> y desarrollador de software con experiencia real construyendo sistemas empresariales: backend, infraestructura en la nube e integraciones con plataformas empresariales y regulatorias en Colombia.</p>
+        <p>Me apasiona ese momento en que un proceso que tomaba horas de trabajo manual empieza a correr solo, sin errores. Ahí es donde la tecnología deja de ser un gasto y se vuelve <b style="color:var(--green-deep)">tiempo recuperado</b>.</p>
+      </div>
+      <div class="card reveal">
+        <span class="tag">Cómo trabajo</span>
+        <ul class="list" style="margin-top:16px">
+          <li><b>Claro:</b> te explico qué hago y por qué, sin enredos técnicos.</li>
+          <li><b>Medible:</b> cada automatización se entrega con métricas de tiempo ahorrado.</li>
+          <li><b>Por fases:</b> empezamos pequeño y escalamos según resultados.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HABILIDADES ================= -->
+<section id="habilidades" style="padding-top:0">
+  <div class="wrap">
+    <div class="prompt">alejandro --skills --top=5</div>
+    <h2>Habilidades distintivas</h2>
+    <p class="sub">Lo que sostiene cada proyecto que entrego.</p>
+    <div class="skill-grid">
+      <div class="card skill reveal"><div class="num">01</div><div><h3>Resolución de problemas</h3><p>Diagnostico y corrijo fallas en sistemas en producción bajo presión: desde servidores saturados hasta integraciones que dejan de responder.</p></div></div>
+      <div class="card skill reveal"><div class="num">02</div><div><h3>Pensamiento lógico y analítico</h3><p>Descompongo procesos complejos en pasos claros: no se puede automatizar lo que no se entiende.</p></div></div>
+      <div class="card skill reveal"><div class="num">03</div><div><h3>Aprendizaje autodidacta</h3><p>He aprendido cloud, IA y nuevas herramientas por mi cuenta, aplicándolas en proyectos reales antes de que fueran tendencia.</p></div></div>
+      <div class="card skill reveal"><div class="num">04</div><div><h3>Adaptabilidad</h3><p>Me muevo entre backend, infraestructura, normativa e IA según lo que cada proyecto exige, sin perder el objetivo del negocio.</p></div></div>
+      <div class="card skill reveal"><div class="num">05</div><div><h3>Creatividad estratégica</h3><p>Convierto necesidades del negocio en soluciones concretas: bots, integraciones y flujos que generan valor medible.</p></div></div>
+    </div>
+    <div class="stack-row reveal">
+      <span class="stack-chip">Node.js</span>
+      <span class="stack-chip">Python</span>
+      <span class="stack-chip">GCP</span>
+      <span class="stack-chip">Docker</span>
+      <span class="stack-chip">SQL</span>
+      <span class="stack-chip">APIs REST</span>
+      <span class="stack-chip">LLMs / IA generativa</span>
+      <span class="stack-chip">Bots WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="prompt">alejandro --servicios</div>
+    <h2>¿Qué puedo automatizar por ti?</h2>
+    <p class="sub">Para empresas cuyos equipos pierden horas en tareas manuales y repetitivas, y que saben que la IA puede ayudarles… pero no saben por dónde empezar.</p>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="icon">🤖</div>
+        <h3>Bots con IA</h3>
+        <p>Asistentes de WhatsApp y chat que responden a tus clientes, agendan y capturan datos 24/7, con la inteligencia de los mejores modelos de lenguaje.</p>
+        <span class="badge">atención sin filas</span>
+      </div>
+      <div class="svc reveal">
+        <div class="icon">🔗</div>
+        <h3>Integraciones</h3>
+        <p>Conecto tus sistemas entre sí — facturación, contabilidad, CRM, plataformas regulatorias — para que los datos fluyan solos, sin digitación doble.</p>
+        <span class="badge">cero re-digitación</span>
+      </div>
+      <div class="svc reveal">
+        <div class="icon">⚙️</div>
+        <h3>Automatización de procesos</h3>
+        <p>Reportes que se generan solos, documentos que se procesan sin manos y flujos de trabajo que corren en la nube mientras tu equipo hace trabajo de valor.</p>
+        <span class="badge">horas recuperadas</span>
+      </div>
+    </div>
+    <div class="garaje reveal">
+      <span class="tag amber">servicio insignia</span>
+      <h3 style="margin-top:12px">🚗 Garaje de automatización</h3>
+      <p><b>Empieza pequeño, crece con resultados.</b> Como las grandes empresas que nacieron en un garaje: en <b>una semana</b> construyo la primera automatización piloto de tu negocio, enfocada en la tarea que más tiempo le roba a tu equipo. Con las horas recuperadas como evidencia, tú decides la siguiente etapa. Por fases, sin grandes inversiones iniciales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROYECTOS ================= -->
+<section id="proyectos">
+  <div class="wrap">
+    <div class="prompt">alejandro --proyectos</div>
+    <h2>Proyectos</h2>
+    <p class="sub">Sistemas reales, en producción, resolviendo problemas reales. <span style="font-family:var(--mono);font-size:13px">// edita estas tarjetas con tus casos</span></p>
+    <div class="proj-grid">
+      <div class="card proj reveal">
+        <span class="head">bot · whatsapp · ia</span>
+        <h3>Asistente de WhatsApp con IA</h3>
+        <p>Bot conversacional conectado a modelos de lenguaje, con manejo de contexto, buffering de mensajes y controles de activación. Atiende conversaciones grupales y de negocio.</p>
+        <div class="foot"><span class="mini-chip">Node.js</span><span class="mini-chip">LLM API</span><span class="mini-chip">whatsapp-web.js</span></div>
+      </div>
+      <div class="card proj reveal">
+        <span class="head">integración · regulatorio</span>
+        <h3>Facturación electrónica en salud</h3>
+        <p>Integraciones con plataformas de facturación y validación regulatoria colombiana (sector salud), incluyendo diagnóstico de errores de firma digital y validaciones normativas.</p>
+        <div class="foot"><span class="mini-chip">APIs REST</span><span class="mini-chip">.NET</span><span class="mini-chip">SQL Server</span></div>
+      </div>
+      <div class="card proj reveal">
+        <span class="head">cloud · optimización</span>
+        <h3>Rescate de infraestructura en GCP</h3>
+        <p>Diagnóstico y solución de un servidor en producción al 100% de CPU: fuga de conexiones a base de datos, consultas lentas y endurecimiento de seguridad.</p>
+        <div class="foot"><span class="mini-chip">GCP</span><span class="mini-chip">MySQL</span><span class="mini-chip">Linux</span></div>
+      </div>
+      <div class="card proj reveal">
+        <span class="head">datos · estrategia</span>
+        <h3>Agente de trading algorítmico</h3>
+        <p>Sistema event-driven en Python con múltiples estrategias, gestión de riesgo con stops dinámicos y backtesting out-of-sample para validar sin autoengaño.</p>
+        <div class="foot"><span class="mini-chip">Python</span><span class="mini-chip">Backtesting</span><span class="mini-chip">APIs de broker</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= BLOG ================= -->
+<section id="blog" style="padding-top:0">
+  <div class="wrap">
+    <div class="prompt">alejandro --blog</div>
+    <h2>Contenido técnico</h2>
+    <p class="sub">Comparto lo que aprendo construyendo sistemas reales. <span style="font-family:var(--mono);font-size:13px">// enlaza aquí tus publicaciones de LinkedIn o tu blog</span></p>
+    <div class="blog-grid">
+      <a class="card post reveal" href="#" target="_blank" rel="noopener">
+        <span class="date">2026 · automatización</span>
+        <h3>5 procesos que toda pyme puede automatizar esta semana</h3>
+        <p>Los sospechosos de siempre: reportes manuales, digitación doble y respuestas repetidas a clientes. Por dónde empezar y qué esperar.</p>
+        <span class="read">leer →</span>
+      </a>
+      <a class="card post reveal" href="#" target="_blank" rel="noopener">
+        <span class="date">2026 · ia</span>
+        <h3>Tu primer bot de WhatsApp con IA: lo que nadie te cuenta</h3>
+        <p>Contexto, memoria, control de activación y los errores que cometí para que tú no tengas que cometerlos.</p>
+        <span class="read">leer →</span>
+      </a>
+      <a class="card post reveal" href="#" target="_blank" rel="noopener">
+        <span class="date">2026 · cloud</span>
+        <h3>Qué aprendí rescatando un servidor al 100% de CPU</h3>
+        <p>Una fuga de conexiones, una consulta lenta y una lección sobre por qué el monitoreo barato sale caro.</p>
+        <span class="read">leer →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section id="contacto" style="padding-top:0">
+  <div class="wrap">
+    <div class="prompt">alejandro --contacto</div>
+    <h2>¿Qué proceso te está robando tiempo?</h2>
+    <p class="sub">Cuéntamelo. Te digo con claridad si se puede automatizar, cuánto tomaría y qué resultados esperar.</p>
+    <div class="card reveal">
+      <div style="font-family:var(--mono);font-size:14px;color:var(--ink-soft)">$ contact --edwin-alejandro</div>
+      <form id="contact-form" novalidate>
+        <div class="form-grid">
+          <div><label for="f-nombre">nombre</label><input id="f-nombre" name="nombre" type="text" required placeholder="Tu nombre"></div>
+          <div><label for="f-empresa">empresa (opcional)</label><input id="f-empresa" name="empresa" type="text" placeholder="Tu empresa"></div>
+          <div class="full"><label for="f-mensaje">¿qué proceso quieres automatizar?</label><textarea id="f-mensaje" name="mensaje" required placeholder="Cuéntame qué tarea le roba más tiempo a tu equipo..."></textarea></div>
+          <div class="full"><button type="submit" class="btn btn-primary" style="border:none;cursor:pointer">Enviar mensaje →</button></div>
+        </div>
+      </form>
+      <p class="form-note">// el formulario abre tu correo con el mensaje listo. Para recibirlo directo en una bandeja, conéctalo a un servicio como Formspree cambiando el action del form.</p>
+      <!-- ✏️ EDITA AQUÍ tus enlaces reales -->
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:edwin.gonzalezgue@cun.edu.co">✉️ edwin.gonzalezgue@cun.edu.co</a>
+        <a class="btn btn-ghost" href="https://github.com/alejo117" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://wa.me/573212529695" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Edwin Alejandro González Guerrero</span>
+    <span>status: <span style="color:var(--green-deep)">en producción ●</span></span>
+  </div>
+</footer>
+
+<script>
+// máquina de escribir en el terminal del hero
+const l1 = "edwin alejandro gonzález · dev de software";
+const l2 = "automatizar --todo --con-ia";
+const t1 = document.getElementById('type-1');
+const t2 = document.getElementById('type-2');
+const w2 = document.getElementById('type-2-wrap');
+let i = 0;
+function typeFirst(){
+  if(i < l1.length){ t1.textContent += l1[i++]; setTimeout(typeFirst, 34); }
+  else { w2.style.visibility='visible'; i=0; setTimeout(typeSecond, 420); }
+}
+function typeSecond(){
+  if(i < l2.length){ t2.textContent += l2[i++]; setTimeout(typeSecond, 44); }
+}
+setTimeout(typeFirst, 500);
+
+// reveal on scroll
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// modo oscuro (en memoria, respeta la preferencia del sistema)
+const root = document.documentElement;
+const tgl = document.getElementById('theme-toggle');
+function setTheme(t){
+  if(t==='dark'){ root.setAttribute('data-theme','dark'); tgl.textContent='☀️'; }
+  else { root.removeAttribute('data-theme'); tgl.textContent='🌙'; }
+}
+setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+tgl.addEventListener('click', ()=> setTheme(root.hasAttribute('data-theme') ? 'light' : 'dark'));
+
+// formulario -> abre el correo con el mensaje prellenado
+// ✏️ cambia este correo por el tuyo:
+const MI_CORREO = 'edwin.gonzalezgue@cun.edu.co';
+document.getElementById('contact-form').addEventListener('submit', e=>{
+  e.preventDefault();
+  const n = document.getElementById('f-nombre').value.trim();
+  const em = document.getElementById('f-empresa').value.trim();
+  const m = document.getElementById('f-mensaje').value.trim();
+  if(!n || !m){ alert('Cuéntame tu nombre y qué proceso quieres automatizar 🙂'); return; }
+  const asunto = encodeURIComponent(`Automatización · ${n}${em ? ' ('+em+')' : ''}`);
+  const cuerpo = encodeURIComponent(`Hola Alejandro,\n\n${m}\n\n— ${n}${em ? '\n'+em : ''}`);
+  window.location.href = `mailto:${MI_CORREO}?subject=${asunto}&body=${cuerpo}`;
+});
+</script>
+</body>
+</html>
